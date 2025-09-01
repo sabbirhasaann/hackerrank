@@ -10,10 +10,85 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             },
             "problemMatcher": [],
             "detail": "Runs the active Python file"
-        }
+        },
+        {
+            "label": "Run Python with I/O files",
+            "type": "shell",
+            "command": "cmd.exe",
+            "args": [
+                "/c",
+                "python ${file} < input.txt > output.txt"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Python with I/O files (PowerShell)",
+            "type": "shell",
+            "command": "Get-Content input.txt | python ${file} | Set-Content output.txt",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "Customize Build",
+            "type": "cppbuild",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "a.exe",
+                "&",
+                "a.exe",
+                "<",
+                "input.txt",
+                ">",
+                "output.txt"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": "$gcc",
+            "detail": "Generated task by vscode",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe"
+                }
+            }
+        },
+        {
+            "label": "Build for Debug",
+            "type": "cppbuild",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                // "-std=c++17"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": "$gcc",
+            "detail": "Generated task by vscode",
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe"
+                }
+            }
+        },
     ]
 }
